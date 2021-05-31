@@ -141,14 +141,13 @@ private extension GIAppDebugConsole {
     }
     
     func configConsoleView(_ viewConsole: UIView) {
-        viewConsole.frame = .init(origin: .init(x: 100, y: 100),
+        viewConsole.frame = .init(origin: .init(x: 100, y: 300),
                                   size: uiConfigurator.consoleUIConfig.consoleDefaultSize)
         viewConsole.backgroundColor = uiConfigurator.consoleUIConfig.consoleBackgroundColor
 
         viewConsole.layer.shadowRadius = 16
         viewConsole.layer.shadowOpacity = 0.5
         viewConsole.layer.shadowOffset = CGSize(width: 0, height: 2)
-        
         viewConsole.layer.cornerRadius = 20
     
         viewConsole.addGestureRecognizer(panGestureRec)

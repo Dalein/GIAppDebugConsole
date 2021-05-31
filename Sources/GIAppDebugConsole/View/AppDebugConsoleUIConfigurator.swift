@@ -54,9 +54,11 @@ class AppDebugConsoleUIConfigurator {
         let btn = GIMenuButton(frame: menuButtonFrame(by: parentSize))
         
         btn.imageEdgeInsets = .init(top: 4, left: 4, bottom: 4, right: 4)
-        btn.setImage(btnConfig.image, for: .normal)
-        btn.backgroundColor = btnConfig.backgroundColor
         btn.layer.cornerRadius = btnConfig.size.width/2
+   
+        btn.setImage(btnConfig.image, for: .normal)
+        btn.setTitle(btnConfig.title, for: .normal)
+        btn.backgroundColor = btnConfig.backgroundColor
         btn.tintColor = btnConfig.tintColor
         btn.alpha = btnConfig.alpha
         
