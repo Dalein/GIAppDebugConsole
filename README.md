@@ -13,7 +13,7 @@ This project was inspared by [LocalConsole](https://github.com/duraidabdul/Local
 
 ## **Setup**
 
-1. In your Xcode project, navigate to File > Swift Packages > Add Package Dependancy...
+1. In your Xcode project, navigate to File > Swift Packages > Add Package Dependency...
 
 2. Paste the following into the URL field: https://github.com/Dalein/GIAppDebugConsole.git
 
