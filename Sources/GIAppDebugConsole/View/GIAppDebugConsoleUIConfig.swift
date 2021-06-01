@@ -53,13 +53,15 @@ public extension GIAppDebugConsoleUIConfig {
         var tintColor: UIColor
         var alpha: CGFloat
         
+        public static let menuButtonDefaultTitle = "⌘"
+        
         
         // MARK: - Init
         
         public init(size: CGSize = .init(width: 36, height: 36),
                     backgroundColor: UIColor = UIColor(white: 1, alpha: 0.75),
                     image: UIImage? = nil,
-                    title: String? = "⌘",
+                    title: String? = MenuButtonConfig.menuButtonDefaultTitle,
                     tintColor: UIColor = UIColor(white: 0.7, alpha: 0.75),
                     alpha: CGFloat = 0.8)
         {
@@ -67,6 +69,14 @@ public extension GIAppDebugConsoleUIConfig {
             self.backgroundColor = backgroundColor
             
             self.image = image
+            
+            self.title = {
+                if image != nil && title == MenuButtonConfig.menuButtonDefaultTitle {
+                    return nil
+                } else {
+                    return title
+                }
+            }()
             
             if image == nil {
                 self.title = title
