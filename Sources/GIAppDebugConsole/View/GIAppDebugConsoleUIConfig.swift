@@ -65,8 +65,13 @@ public extension GIAppDebugConsoleUIConfig {
         {
             self.size = size
             self.backgroundColor = backgroundColor
+            
             self.image = image
-            self.title = title
+            
+            if image == nil {
+                self.title = title
+            }
+            
             self.tintColor = tintColor
             self.alpha = alpha
         }
