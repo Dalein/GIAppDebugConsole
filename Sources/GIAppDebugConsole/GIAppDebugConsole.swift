@@ -30,10 +30,6 @@ final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
         createConsoleView()
     }
     
-    deinit {
-        print("\(type(of: self)) \(#function)")
-    }
-    
     
     // MARK: - Properties
     

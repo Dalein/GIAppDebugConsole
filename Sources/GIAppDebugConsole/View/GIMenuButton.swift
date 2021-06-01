@@ -16,10 +16,6 @@ public class GIMenuButton: UIButton {
         }
     }
     
-    deinit {
-        print("\(type(of: self)) \(#function)")
-    }
-    
 }
 
 
