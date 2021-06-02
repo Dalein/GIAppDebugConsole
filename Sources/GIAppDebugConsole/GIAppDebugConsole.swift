@@ -137,8 +137,7 @@ private extension GIAppDebugConsole {
     }
     
     func configConsoleView(_ viewConsole: UIView) {
-        viewConsole.frame = .init(origin: .init(x: 100, y: 300),
-                                  size: uiConfigurator.consoleUIConfig.consoleDefaultSize)
+        viewConsole.frame = uiConfigurator.consoleUIConfig.consoleFrame
         viewConsole.backgroundColor = uiConfigurator.consoleUIConfig.consoleBackgroundColor
 
         viewConsole.layer.shadowRadius = 16
@@ -148,7 +147,8 @@ private extension GIAppDebugConsole {
     
         viewConsole.addGestureRecognizer(panGestureRec)
         viewConsole.addGestureRecognizer(longPressRecognizer)
-        viewConsole.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(handlePinch)))
+        viewConsole.addGestureRecognizer(UIPinchGestureRecognizer(target: self,
+                                                                  action: #selector(handlePinch)))
     }
     
 }

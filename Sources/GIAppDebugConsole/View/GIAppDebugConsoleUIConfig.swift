@@ -9,6 +9,7 @@ import UIKit
 
 /// Model describes **Console** UI
 public struct GIAppDebugConsoleUIConfig {
+    var consoleInitialPosition: CGPoint
     var consoleDefaultSize: CGSize
     var consoleMaxSize: CGSize
     
@@ -19,11 +20,17 @@ public struct GIAppDebugConsoleUIConfig {
     
     var menuButtonConfig: MenuButtonConfig
     
+    var consoleFrame: CGRect {
+        .init(origin: consoleInitialPosition,
+              size: consoleDefaultSize)
+    }
+    
     
     // MARK: - Init
     
-    public init(consoleDefaultSize: CGSize = .init(width: UIScreen.main.bounds.width * 0.75,
-                                                   height: 124),
+    public init(consoleInitialPosition: CGPoint = .init(x: 20, y: 300),
+                consoleDefaultSize: CGSize = .init(width: UIScreen.main.bounds.width * 0.9,
+                                                   height: 200),
                 consoleMaxSize: CGSize = .init(width: UIScreen.main.bounds.width,
                                                height: UIScreen.main.bounds.height * 0.5),
                 consoleBackgroundColor: UIColor = .black,
@@ -31,6 +38,7 @@ public struct GIAppDebugConsoleUIConfig {
                 font: UIFont = .systemFont(ofSize: 13, weight: .regular),
                 menuButtonConfig: GIAppDebugConsoleUIConfig.MenuButtonConfig = .init())
     {
+        self.consoleInitialPosition = consoleInitialPosition
         self.consoleDefaultSize = consoleDefaultSize
         self.consoleMaxSize = consoleMaxSize
         self.consoleBackgroundColor = consoleBackgroundColor
