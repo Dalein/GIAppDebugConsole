@@ -70,7 +70,7 @@ public extension GIAppDebugConsoleUIConfig {
                     backgroundColor: UIColor = UIColor(white: 1, alpha: 0.75),
                     image: UIImage? = nil,
                     title: String? = MenuButtonConfig.menuButtonDefaultTitle,
-                    tintColor: UIColor = UIColor(white: 0.7, alpha: 0.75),
+                    tintColor: UIColor = .white,
                     alpha: CGFloat = 0.8)
         {
             self.size = size
