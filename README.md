@@ -8,6 +8,7 @@ This project was inspared by [LocalConsole](https://github.com/duraidabdul/Local
 
 <div>
   <img src="https://user-images.githubusercontent.com/4835671/120287761-0014ff80-c2d9-11eb-8202-ddae8ee911aa.mp4" width="320">
+  <img src="https://user-images.githubusercontent.com/4835671/120646244-c1c34000-c492-11eb-8b11-10e65d879db8.mov" width="320">
 </div>
 
 
@@ -31,6 +32,13 @@ To log something:
 ```swift
 GIAppDebugConsole.shared.log("test")
 ```
+
+Or attributed string:
+```swift
+GIAppDebugConsole.shared.logAttributed(.init(string: "My super log", attributes: [.foregroundColor: UIColor.red]))
+```
+
+It's safe to log simultaneously string and NSAttributedString.
 
 By default console has two actions in menu: *Clear console* and *Copy*.
 You can add your own actions like this:
