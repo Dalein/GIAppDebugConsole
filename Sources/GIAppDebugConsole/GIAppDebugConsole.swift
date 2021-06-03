@@ -77,9 +77,13 @@ final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
     private lazy var menuButton: GIMenuButton = {
         uiConfigurator.createMenuButton(parentSize: consoleView.bounds.size)
     }()
-
+    
     
     // MARK: - API
+    
+    /// Is it need to insert new line symbols between log print statements.
+    /// `true` by default.
+    public var isSeparateLogsByNewLine = true
     
     /// Shared instance
     public fileprivate(set) static var shared: GIAppDebugConsole = .init(consoleUIConfig: .init())
@@ -97,17 +101,21 @@ final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
     /// Log items to the console view.
     /// Executing on the **main thread**.
     public func log(_ log: String) {
-        logAttributed(.init(string: log,
-                            attributes: uiConfigurator.consoleUIConfig.defaultTextAttributes))
+        logAttributed(.init(string: "\(separateSymbol)\(log)\(separateSymbol)",
+                            attributes: uiConfigurator.defaultTextAttributes))
     }
     
+    /// Log items to the console view.
+    /// Executing on the **main thread**.
     public func logAttributed(_ log: NSAttributedString) {
-        DispatchQueue.main.async {
-            let currAttributedText = NSMutableAttributedString(attributedString: self.consoleTextView.attributedText ?? .init(string: ""))
-
-            currAttributedText.append(log)
-            
-            self.consoleTextView.attributedText = currAttributedText
+        DispatchQueue.main.async { [self] in
+            consoleTextView.attributedText = {
+                let currAttributedText = NSMutableAttributedString(attributedString: consoleTextView.attributedText ?? .init(string: ""))
+                currAttributedText.append(.init(string: separateSymbol))
+                currAttributedText.append(log)
+                currAttributedText.append(.init(string: separateSymbol))
+                return currAttributedText
+            }()
         }
     }
     
@@ -158,6 +166,10 @@ private extension GIAppDebugConsole {
         viewConsole.addGestureRecognizer(longPressRecognizer)
         viewConsole.addGestureRecognizer(UIPinchGestureRecognizer(target: self,
                                                                   action: #selector(handlePinch)))
+    }
+    
+    private var separateSymbol: String {
+        isSeparateLogsByNewLine ? "\n" : ""
     }
     
 }
