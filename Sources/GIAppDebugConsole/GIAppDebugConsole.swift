@@ -20,7 +20,6 @@ final public class GIAppDebugConsoleConfigurator {
 
 
 final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
-    private var uiConfigurator: AppDebugConsoleUIConfigurator!
     
     // MARK: - Init
     
@@ -80,6 +79,8 @@ final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
     
     
     // MARK: - API
+    
+    public let uiConfigurator: AppDebugConsoleUIConfigurator
     
     /// Is it need to insert new line symbols between log print statements.
     /// `true` by default.

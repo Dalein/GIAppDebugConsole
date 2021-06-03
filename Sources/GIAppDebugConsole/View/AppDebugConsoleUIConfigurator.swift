@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppDebugConsoleUIConfigurator {
+public class AppDebugConsoleUIConfigurator {
     let consoleUIConfig: GIAppDebugConsoleUIConfig
     
     
