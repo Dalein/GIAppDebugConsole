@@ -8,7 +8,7 @@
 import UIKit
 
 class AppDebugConsoleUIConfigurator {
-    var consoleUIConfig: GIAppDebugConsoleUIConfig
+    let consoleUIConfig: GIAppDebugConsoleUIConfig
     
     
     // MARK: - Init
@@ -19,6 +19,13 @@ class AppDebugConsoleUIConfigurator {
     
     
     // MARK: - API
+    
+    lazy var defaultTextAttributes: [NSAttributedString.Key: Any] = {
+        [
+            .foregroundColor: consoleUIConfig.textColor,
+            .font: consoleUIConfig.font
+        ]
+    }()
     
     func createConsoleTextView(parentFrame: CGRect) -> UITextView {
         let txtView = UITextView()
@@ -32,7 +39,7 @@ class AppDebugConsoleUIConfigurator {
         
         txtView.textColor = consoleUIConfig.textColor
         txtView.font = consoleUIConfig.font
-    
+        
         return txtView
     }
     
@@ -41,7 +48,7 @@ class AppDebugConsoleUIConfigurator {
         
         let insets = UIEdgeInsets(top: 0, left: 0,
                                   bottom: 8, right: 8)
-    
+        
         let btnOrigin = CGPoint(x: superViewSize.width - btnConfig.size.width - insets.right,
                                 y: superViewSize.height - btnConfig.size.height - insets.bottom)
         
@@ -55,7 +62,7 @@ class AppDebugConsoleUIConfigurator {
         
         btn.imageEdgeInsets = .init(top: 4, left: 4, bottom: 4, right: 4)
         btn.layer.cornerRadius = btnConfig.size.width/2
-   
+        
         btn.setImage(btnConfig.image, for: .normal)
         btn.setTitle(btnConfig.title, for: .normal)
         btn.backgroundColor = btnConfig.backgroundColor
@@ -64,5 +71,5 @@ class AppDebugConsoleUIConfigurator {
         
         return btn
     }
-
+    
 }
