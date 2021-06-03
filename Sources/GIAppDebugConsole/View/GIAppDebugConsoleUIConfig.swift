@@ -25,6 +25,13 @@ public struct GIAppDebugConsoleUIConfig {
               size: consoleDefaultSize)
     }
     
+    lazy var defaultTextAttributes: [NSAttributedString.Key: Any] = {
+        [
+            .foregroundColor: textColor,
+            .font: font
+        ]
+    }()
+    
     
     // MARK: - Init
     

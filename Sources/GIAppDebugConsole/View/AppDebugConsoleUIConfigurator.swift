@@ -8,7 +8,7 @@
 import UIKit
 
 class AppDebugConsoleUIConfigurator {
-    let consoleUIConfig: GIAppDebugConsoleUIConfig
+    var consoleUIConfig: GIAppDebugConsoleUIConfig
     
     
     // MARK: - Init

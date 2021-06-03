@@ -97,8 +97,17 @@ final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
     /// Log items to the console view.
     /// Executing on the **main thread**.
     public func log(_ log: String) {
+        logAttributed(.init(string: log,
+                            attributes: uiConfigurator.consoleUIConfig.defaultTextAttributes))
+    }
+    
+    public func logAttributed(_ log: NSAttributedString) {
         DispatchQueue.main.async {
-            self.consoleTextView.text += "\n\(log)\n"
+            let currAttributedText = NSMutableAttributedString(attributedString: self.consoleTextView.attributedText ?? .init(string: ""))
+
+            currAttributedText.append(log)
+            
+            self.consoleTextView.attributedText = currAttributedText
         }
     }
     
