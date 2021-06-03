@@ -78,10 +78,6 @@ final public class GIAppDebugConsole: NSObject, UIGestureRecognizerDelegate {
         uiConfigurator.createMenuButton(parentSize: consoleView.bounds.size)
     }()
     
-    private var separateSymbol: String {
-        isSeparateLogsByNewLine ? "\n" : ""
-    }
-
     
     // MARK: - API
     
@@ -170,6 +166,10 @@ private extension GIAppDebugConsole {
         viewConsole.addGestureRecognizer(longPressRecognizer)
         viewConsole.addGestureRecognizer(UIPinchGestureRecognizer(target: self,
                                                                   action: #selector(handlePinch)))
+    }
+    
+    private var separateSymbol: String {
+        isSeparateLogsByNewLine ? "\n" : ""
     }
     
 }
